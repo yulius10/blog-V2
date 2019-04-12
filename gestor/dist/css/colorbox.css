@@ -1,0 +1,210 @@
+/* Colorbox Core Style: */
+#colorbox, #cboxOverlay, #cboxWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    overflow: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+}
+#cboxWrapper {
+    max-width: none;
+}
+#cboxOverlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+#cboxMiddleLeft, #cboxBottomLeft {
+    clear: left;
+}
+#cboxContent {
+    position: relative;
+}
+#cboxLoadedContent {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+#cboxLoadingOverlay, #cboxLoadingGraphic {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.cboxPhoto {
+    display: block;
+    max-width: none;
+    margin: auto;
+    border: 0;
+    float: left;
+    -ms-interpolation-mode: bicubic;
+}
+.cboxIframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+#colorbox, #cboxContent, #cboxLoadedContent {
+    box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+}
+
+/* User Style: */
+#cboxOverlay {
+	background: #000;
+	opacity: 0.9;
+	filter: alpha(opacity=90);
+}
+#colorbox, #colorbox * {
+    outline: none;
+}
+#cboxContent {
+    overflow: hidden;
+}
+.cboxIframe {
+	background: none;
+}
+#cboxError {
+	padding: 20px;
+    font-size: 0.9rem;
+    line-height: 1.7rem;
+    text-align: center;
+    color: #FFF;
+    position: relative;
+    z-index: 5;
+}
+#cboxLoadingOverlay::before, #cboxLoadingOverlay::after {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	box-sizing: border-box;
+}
+#cboxLoadingOverlay::before {
+	width: 50px;
+	height: 50px;
+	margin: -25px 0px 0px -25px;
+	border-radius: 5px;
+	background: #2C2C2C;
+}
+#cboxLoadingOverlay::after {
+	width: 36px;
+	height: 36px;
+	margin: -18px 0px 0px -18px;
+	border-radius: 50%;
+	border-top: 6px solid rgba(255, 255, 255, 0.3);
+	border-right: 6px solid rgba(255, 255, 255, 0.3);
+	border-bottom: 6px solid rgba(255, 255, 255, 0.3);
+	border-left: 6px solid #FFFFFF;
+	-webkit-animation: loadCircle 0.5s infinite linear;
+	animation: loadCircle 0.5s infinite linear;
+}
+
+/*Content*/
+.fContent #cboxLoadedContent {
+    padding: 15px;
+    font-size: 0rem;
+    line-height: 0rem;
+    letter-spacing: 0rem;
+}
+.fContent #cboxLoadedContent::before, .gFancyT {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+.fContent #cboxLoadedContent::before {
+    content: '';
+    width: 0px;
+    height: 100%;
+}
+.gFancyT {
+    width: 100%;
+    font-size: 0.95rem;
+    line-height: 1.6rem;
+    position: relative;
+}
+
+/*Btns fancy*/
+#cboxSlideshow, #cboxPrevious, .btnPF, #cboxNext, .btnNF, #cboxPrevious::before, .btnPF::before, #cboxNext::before, .btnNF::before, #cboxClose, #cboxClose::before, #cboxClose::after, .cboxCF, .cboxCF::before, .cboxCF::after {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+#cboxSlideshow, #cboxPrevious, .btnPF, #cboxNext, .btnNF, #cboxClose, .cboxCF {
+    border: none;
+    background: none;
+    outline: none;
+    cursor: pointer;
+    text-align: left;
+    text-indent: -9999px;
+}
+#cboxSlideshow, .fContent #cboxPrevious, .fContent #cboxNext {
+    display: none !important;
+}
+
+/*Btns Lightbox*/
+#cboxPrevious, .btnPF, #cboxNext, .btnNF, #cboxPrevious::before, .btnPF::before, #cboxNext::before, .btnNF::before, #cboxClose, #cboxClose::before, #cboxClose::after, .cboxCF, .cboxCF::before, .cboxCF::after {
+    display: block;
+    position: absolute;
+}
+#cboxPrevious, .btnPF, #cboxNext, .btnNF, #cboxClose, .cboxCF {
+	width: 40px;
+	height: 40px;
+	top: 0px;
+	z-index: 10;
+	transition: opacity 0.25s ease;
+}
+#cboxPrevious:hover, .btnPF:hover, #cboxNext:hover, .btnNF:hover, #cboxClose:hover, .cboxCF:hover {
+	opacity: 0.5;
+}
+#cboxPrevious:active, .btnPF:active, #cboxNext:active, .btnNF:active, #cboxClose:active, .cboxCF:active {
+	margin-top: 2px;
+}
+#cboxPrevious, .btnPF {
+    right: 80px;
+}
+#cboxNext, .btnNF {
+    right: 40px;
+}
+#cboxClose, .cboxCF {
+	right: 0px;
+}
+#cboxPrevious::before, .btnPF::before, #cboxNext::before, .btnNF::before, #cboxClose::before, #cboxClose::after, .cboxCF::before, .cboxCF::after {
+	content: '';
+	top: 50%;
+	left: 50%;
+}
+#cboxPrevious::before, .btnPF::before, #cboxNext::before, .btnNF::before {
+	width: 12px;
+	height: 12px;
+	border-left: 4px solid #2C2C2C;
+	border-bottom: 4px solid #2C2C2C;
+}
+#cboxPrevious::before, .btnPF::before {
+	margin-left: 2px;
+	transform: translate(-50%, -50%) rotate(45deg);
+}
+#cboxNext::before, .btnNF::before {
+	margin-left: -2px;
+	transform: translate(-50%, -50%) rotate(-135deg);
+}
+#cboxClose::before, #cboxClose::after, .cboxCF::before, .cboxCF::after {
+	background: #2C2C2C;
+	transform: translate(-50%, -50%) rotate(45deg);
+}
+#cboxClose::before, .cboxCF::before {
+	width: 20px;
+	height: 4px;
+}
+#cboxClose::after, .cboxCF::after {
+	width: 4px;
+	height: 20px;
+}

@@ -1,0 +1,424 @@
+/*!
+* CSS jQuery.filer
+* Copyright (c) 2016 CreativeDream
+* Version: 1.2 (22-Aug-2016)
+*/
+
+@import url('fonts/jquery-filer.css');
+
+/*Input file*/
+.gCDocs, .jFiler, .jFiler-input, .listIDoc, .jFiler-input-dragDrop {
+	display: block;
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+	position: relative;
+}
+.jFiler input[type="file"] {}
+.textFile {
+	height: 0px;
+	padding: 0px;
+	border: none;
+}
+.jFiler-input {
+	height: 35px;
+	outline: none;
+	border: 1px solid #CCC;
+	background: #FFF;
+	font-size: 0.95rem;
+	line-height: 1rem;
+	font-weight: 400;
+}
+.jFiler-input-caption, .jFiler-input-button {
+	display: block;
+	margin: 0px;
+	box-sizing: border-box;
+}
+.jFiler-input-caption {
+	width: 100%;
+	padding: 8px 50px 0px 10px;
+}
+.jFiler-input-caption span {
+	display: block;
+	width: 100%;
+	height: 0.95rem;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+.jFiler-input-button {
+	width: 40px;
+	height: 100%;
+	padding: 8px 0px;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	border-left: 1px solid #CCC;
+	color: #666666;
+	text-align: center;
+	background-color: #EEEEEE;
+	transition: color 0.25s ease;
+	cursor: pointer;
+}
+.jFiler-input-button:hover {
+	color: #000;
+}
+.jFiler-input-button:active {
+	box-shadow: inset 0px 0px 2px 0px rgba(0, 0, 0, 0.2);
+}
+
+/*File drag*/
+.jFiler-input-dragDrop {
+	padding: 20px;
+	background: #FFF;
+	border: 2px dashed #CCC;
+	color: #999;
+	text-align: center;
+	transition: box-shadow 0.3s, border-color 0.3s;
+}
+.jFiler.dragged .jFiler-input-dragDrop {
+	border-color: #333;
+	box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+	color: #333;
+}
+.jFiler.dragged .jFiler-input-dragDrop * {
+	pointer-events: none;
+}
+.jFiler-input-dragDrop .jFiler-input-icon {
+	display: block;
+	margin: 0px auto 15px;
+	font-size: 4rem;
+	line-height: 2.5rem;
+}
+.jFiler-input-dragDrop .jFiler-input-icon i {
+	display: inline-block;
+	vertical-align: middle;
+	color: inherit;
+	transition: transform 0.25s ease, color 0.25s ease;
+}
+.jFiler.dragged .jFiler-input-icon i {
+	transform: rotate(180deg);
+}
+.jFiler-input-text {
+	font-family: 'Lato', sans-serif;
+	font-size: 1.5rem;
+	line-height: 1.7rem;
+	font-weight: 300;
+	transition: color 0.25s ease;
+}
+.jFiler-input-text span {
+	display: block;
+	margin: 15px 0px;
+	font-size: 1rem;
+	line-height: 1rem;
+}
+.jFiler-input-choose-btn {
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0px;
+	padding: 8px 16px;
+	border: 1px solid #999;
+	outline: none;
+	cursor: pointer;
+	font-size: 0.9rem;
+	letter-spacing: 0.03rem;
+	line-height: 1.1rem;
+	font-weight: 400;
+	color: inherit;
+	text-decoration: none;
+	text-align: center;
+	position: relative;
+	transition: color 0.5s ease, border-color 0.5s ease, opacity 0.25s ease;
+}
+.jFiler-input-choose-btn:hover {
+	color: #333;
+	border-color: #333;
+}
+.jFiler-input-choose-btn:active {
+	top: 2px;
+}
+.jFiler.dragged .jFiler-input-choose-btn {
+	opacity: 0.2;
+}
+.jFiler-input.focused, .jFiler-input-dragDrop.focused {
+	border-color: #09F;
+}
+input[type="file"].error + .jFiler-input, .textFile.error + .jFiler > .jFiler-input, .textFile.error + .jFiler > .jFiler-input-dragDrop {
+	border-color: #F00;
+}
+
+/*Disabled*/
+.jFiler-theme-disabled .jFiler-input, .jFiler-theme-disabled .jFiler-input-dragDrop {
+	background: #EFEFEF;
+	color: #A2A2A2;
+	opacity: 0.7;
+	cursor: default;
+}
+.jFiler.dragged.jFiler-theme-disabled .jFiler-input-dragDrop {
+	border-color: #CCC;
+	box-shadow: none;
+	color: #A2A2A2;
+}
+.jFiler-theme-disabled .jFiler-input-button, .jFiler-theme-disabled .jFiler-input-choose-btn {
+	color: #A2A2A2;
+	cursor: default;
+	box-shadow: none;
+	border-color: #A2A2A2;
+}
+.jFiler.dragged.jFiler-theme-disabled .jFiler-input-icon i {
+	transform: none;
+}
+
+/*Contenedor items*/
+.gCDocs img {
+	display: block;
+	max-width: 100%;
+}
+.listIDoc {
+	font-size: 0rem;
+	line-height: 1rem;
+	padding-bottom: 5px;
+	z-index: 1;
+}
+.gCDocs.disabled {
+	opacity: 0.5;
+}
+.gCDocs.disabled * {
+	pointer-events: none;
+}
+.gCDocs.disabled::before {
+	content: '';
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 2;
+}
+
+/*Items*/
+.itemIDoc {
+	display: inline-block;
+	vertical-align: top;
+	width: 100%;
+	max-width: 200px;
+	margin: 0px 15px 15px 0px;
+	padding: 5px;
+	box-sizing: border-box;
+	border: 1px solid #CCC;
+	background: #FFF;
+}
+.gMobile .itemIDoc {
+	max-width: 150px;
+}
+.itemIDoc * {
+	word-wrap: break-word;
+}
+.itemIDoc .cThumb, .jFiler-item-thumb-image, .itemIDoc .descIDoc, .itemIDoc .cOptions {
+	display: block;
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+	position: relative;
+}
+.jFiler-item-thumb-image {
+	height: 120px;
+	border: 1px solid #CCC;
+	overflow: hidden;
+}
+.gMobile .jFiler-item-thumb-image {
+	height: 100px;
+}
+.jFiler-item-thumb-image img {
+	display: block;
+	width: auto;
+	height: auto;
+	max-width: 100%;
+	max-height: 100%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+span.jFiler-icon-file {
+	display: block;
+	width: 47px;
+	height: 61px;
+	margin: 0px auto;
+	position: relative;
+	background: #e1e1e1 url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMQAAAEACAYAAADsqNl9AAAD5klEQVR42u3azUqUURjA8bHAEpIK+9hlRBGC0QfVustI+oAo2nQJgYGFFEUhJF1NUVAXEC6iSyhIDCoX5js9Z5xpXmxsRjOdmfP7wfPqwtWZ589xhqlUN2Y5Zi5mJmYi5lzMgZhdFbpavEb32sxsURSfq5mqrPPv52MexYxZrb4NIusoOgoiDudb/JiMGbZSWQSRbRSdBPEqZtQqZRdEllFU2rxPuB8zYI2yDSK7KNYKYinmlvURRG5RVNa4GW5aHUHkGEWrIKasjSByjWJ1EC+tjCByjqKy6qPVI1ZGEDlHUb4h7loXQeQeRSOILzF7rIsgco+iEcS0VRGEKFaCSB+znrQqghDFShDvrYkgRNEM4pk1EYQomkFctiaCEEUziDPWRBCiaAYxYk0EIYpmEIPWRBCiqAeBIEQhCEGIQhBsWxA9E4UNEYQoBCEIUQiC7giiq6OwIYIQhSAEIQpB0H1BdF0UNkQQohCEIEQhCLo7iFoUMZ8EgSC6JAobIghRCEIQohAEvRXEtkRhQwQhCkEIQhSCoHeD2LIobIggRCEIQYhCEPRHEP81ChsiCFEIQhCiEAT9F8SmR2FDBCEKQQhCFIKgv4PYlChsiCD6bZ7/SxQ2RBCiEIQgRCEI8gpiQ1HYEEGIQhCCEIUgyDeIjqOwIYIQhSAEIQpBsBLEKVGsHYUNcUuIQhCCMK2jsB2CEEUpCtshClOKwmYIwpSisBn5BjEqgj+jsBluCVMaWyEKIQiCUhCXhCAI3BKC4K9RXBeEIHBbCALvKwTBRuO4IQgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyEi1Wh10ClBrYXd6jDgKqAVxMD3OOgqoBXE+PSYcBdSCuJIeM44CakHMpseco4BKpSiKDymI5Zgxx0Hmt8N4TDX9kjx0JGQexONyEPMxw46FTGPYF7NQDiKZdDRkGsSDRgTlIL7HHHU8ZBbD8ZjFVkEkr2MGHBOZxLAj5m05gNVBJNOOipzeSLcLIn0Me9tx0ecx3KnvetsgkiVR0Ocx/Gy1+GsF0bgppr2noI9C2BnzpNXN0EkQDW9ijjlOejyGEzHv2i17J0EkP2KmYvY6WnoshP31/3QWO1n0ToNoWKhfOeOOmi4P4XTM06Iovq5nwdcbxG/pm4Hp67IxV2MuxByKGfJSsMWLPxRzOOZizLWYF7GbHze6178AQI59RSRyAJkAAAAASUVORK5CYII=') no-repeat;
+	background-size: cover;
+	color: #fff;
+	font-size: 14px;
+	line-height: 80px;
+	text-align: center;
+	font-weight: bold;
+	overflow: hidden;
+}
+.itemIDoc .cThumb span.jFiler-icon-file {
+	margin-top: 26px;
+}
+.gMobile .itemIDoc .cThumb span.jFiler-icon-file {
+	margin-top: 18px;
+}
+span.jFiler-icon-file i[class*="icon-jfi-"] {
+	font-size: 24px;
+}
+span.jFiler-icon-file.f-image {
+	background-color: #e15955;
+}
+span.jFiler-icon-file.f-video {
+	background-color: #4183d7;
+}
+span.jFiler-icon-file.f-audio {
+	background-color: #5bab6e;
+}
+.itemIDoc .descIDoc {
+	height: 100%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	background: rgba(0, 0, 0, 0.8);
+	color: #FFF;
+	overflow: hidden;
+	text-align: center;
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0.25s ease, opacity 0.25s ease;
+}
+.gMobile .itemIDoc .descIDoc {
+	position: relative;
+	top: auto;
+	left: auto;
+	background: none;
+	color: #000;
+	text-align: left;
+	padding: 10px 0px 2px;
+}
+.itemIDoc .cThumb:hover .descIDoc, .gMobile .itemIDoc .descIDoc {
+	visibility: visible;
+	opacity: 1;
+}
+.itemIDoc .descIDoc::before, .itemIDoc .descIDoc > div {
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
+.itemIDoc .descIDoc::before {
+	content: '';
+	width: 0px;
+	height: 100%;
+}
+.itemIDoc .descIDoc > div {
+	width: 100%;
+	padding: 0px 10px;
+}
+.gMobile .itemIDoc .descIDoc > div {
+	padding: 0px;
+}
+.itemIDoc .descIDoc .iDname, .itemIDoc .descIDoc .iDsize {
+	display: block;
+}
+.itemIDoc .descIDoc .iDname {
+	margin: 0px 0px 5px;
+	font-size: 0.9rem;
+	line-height: 1.1rem;
+	font-weight: 700;
+}
+.gMobile .itemIDoc .descIDoc .iDname {
+	font-size: 0.8rem;
+	line-height: 1rem;
+}
+.itemIDoc .descIDoc .iDsize {
+	font-size: 0.75rem;
+	line-height: 0.9rem;
+	font-weight: 300;
+}
+.itemIDoc .cOptions {
+	min-height: 20px;
+	margin-top: 5px;
+	font-size: 0.9rem;
+	line-height: 1rem;
+}
+.itemIDoc .cOptions .textCO {
+	display: block;
+	margin: 0px;
+	padding: 2px 30px 2px 0px;
+	text-align: left;
+}
+.itemIDoc .cOptions .text-error {
+	color: #FF0000;
+}
+.itemIDoc .cOptions .text-success {
+	color: #3C763D;
+}
+.itemIDoc .btnEliIDoc {
+	display: block;
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	background: none;
+	border: none;
+	outline: none;
+	font-size: 1.1rem;
+	line-height: 1.1rem;
+	color: #CCC;
+	transition: color 0.25s ease;
+}
+.itemIDoc .btnEliIDoc:hover {
+	color: #000;
+}
+.itemIDoc .linkF {
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 3;
+	text-align: left;
+	text-indent: -9999px;
+}
+
+/* Progress Bar */
+.jFiler-jProgressBar {
+	width: 100%;
+	height: 8px;
+	background: #f1f1f1;
+	margin: 4px 0px 0px;
+	overflow: hidden;
+}
+.jFiler-jProgressBar .bar {
+	float: left;
+	width: 0%;
+	height: 100%;
+	font-size: 12px;
+	color: #ffffff;
+	text-align: center;
+	background-color: #0bb713;
+	box-sizing: border-box;
+	transition: width 0.3s ease;
+}
+
+/*Responsive*/
+@media (max-width: 767px) {
+	.itemIDoc, .gMobile .itemIDoc {
+		max-width: 125px;
+		margin: 0px 10px 10px 0px;
+	}
+	.jFiler-item-thumb-image, .gMobile .jFiler-item-thumb-image {
+		height: 80px;
+	}
+	.itemIDoc .cOptions {
+		font-size: 0.75rem;
+	}
+	.itemIDoc .cThumb span.jFiler-icon-file, .gMobile .itemIDoc .cThumb span.jFiler-icon-file {
+		margin-top: 8px;
+	}
+}

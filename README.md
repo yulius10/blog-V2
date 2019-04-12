@@ -1,1 +1,2 @@
-# blog V2
+# blog
+blog y su gestor
